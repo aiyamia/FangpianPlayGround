@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "medium-font";
+  src: url("../fonts/GT-Super-Text-Book.woff2");
+}
+* {
+  font-family: "medium-font";
+  font-size: 22px;
+}
+body {
+  padding: 50px;
+}
+
+a {
+  color: #00B7FF;
+}
