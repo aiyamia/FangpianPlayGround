@@ -7,9 +7,19 @@
   font-size: 22px;
 }
 body {
-  padding: 50px;
+  padding: 4em;
 }
 
 a {
   color: #00B7FF;
+}
+
+#card { 
+  position: absolute;
+  background: white;
+  border: 0.05em solid black;
+  border-radius: 0.5em;
+  /* box-shadow: 0.1em 0.1em 0 0 #555, 0 0 0.1em 0.1em #fff; */
+  box-shadow: 0.1em 0.1em 0 0 #555;
+  padding: 0.5em;
 }

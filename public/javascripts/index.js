@@ -9,8 +9,10 @@ $(function(){
       } else if (document.selection) {
         selection = document.selection.createRange();
       }
-      
-      selection.toString() !== '' && alert('"' + selection.toString() + '" was selected at ' + e.pageX + '/' + e.pageY);
+      $message = $(`<p id="card">${selection.toString()}</p>`);
+      $message.css({"top": e.pageY, "left": e.pageX});
+      $message.appendTo('#Content');
+      // selection.toString() !== '' && alert('"' + selection.toString() + '" was selected at ' + e.pageX + '/' + e.pageY);
   
     }  
   });
