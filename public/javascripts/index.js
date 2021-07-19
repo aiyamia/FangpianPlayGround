@@ -1,18 +1,18 @@
 $(document).ready(function () {
   $(document).on('keydown', function (e) {
-    if (e.ctrlKey) 
+    if (e.ctrlKey || macKeys.cmdKey) 
       $(document.body).css("cursor", "pointer");
       var s = window.getSelection();
       s.removeAllRanges();//取消选择
       $("#card").remove();
   });
   $(document).on('keyup', function (e) {
-    if (!e.ctrlKey) 
+    if (!e.ctrlKey || !macKeys.cmdKey) 
       $(document.body).css("cursor", "initial");
       
   });
   $(document.body).bind('mouseup', async function (e) {
-    if (e.ctrlKey == true) {
+    if (e.ctrlKey || macKeys.cmdKey) {
       var s;
       if (window.getSelection) {
         s = window.getSelection();
