@@ -38,6 +38,7 @@ $(document).ready(function () {
           "top": e.pageY,
           "left": e.pageX
         });
+        $card.appendTo('#Content');
       }
     }
   });
@@ -58,7 +59,7 @@ $(document).ready(function () {
   const fetchData = async(word)=>{
     let response = await fetch(`https://dictweb.translator.qq.com/api/elementary?word=${word}`);
     let result = await response.json();
-    console.log(result);
+    // console.log(result);
     let data = {
       meaning:result.oxford_dict_info.abstract,
       pronunciation:result.oxford_dict_info.ph_json
