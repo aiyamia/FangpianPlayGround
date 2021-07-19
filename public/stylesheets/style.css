@@ -19,7 +19,7 @@ h1 {
   font-size: 3em;
 }
 
-#card { 
+.FangPianCard { 
   /* overflow: scroll; */
   width: 14vw;
   height: auto;

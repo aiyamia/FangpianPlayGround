@@ -1,10 +1,11 @@
 $(document).ready(function () {
+  
   $(document).on('keydown', function (e) {
     if (e.ctrlKey || macKeys.cmdKey) 
       $(document.body).css("cursor", "pointer");
       var s = window.getSelection();
       s.removeAllRanges();//取消选择
-      $("#card").remove();
+      $(".FangPianCard").remove();
   });
   $(document).on('keyup', function (e) {
     if (!e.ctrlKey || !macKeys.cmdKey) 
@@ -12,7 +13,9 @@ $(document).ready(function () {
       
   });
   $(document.body).bind('mouseup', async function (e) {
+    console.log("mouseup");
     if (e.ctrlKey || macKeys.cmdKey) {
+      console.log("mouseup1");
       var s;
       if (window.getSelection) {
         s = window.getSelection();
@@ -39,12 +42,15 @@ $(document).ready(function () {
           "left": e.pageX
         });
         $card.appendTo('#Content');
+        window.addEventListener("click", onClickOutside);
       }
+    }else{
+      $(this).trigger('onmouseup');
     }
   });
   const getCardNode = async(word)=>{
     const data = await fetchData(word);
-    $card = $('<div id="card"></div>');
+    $card = $('<div class="FangPianCard"></div>');
     $pron = $('<div class="pronunciation"></div>');
     $mean = $('<div class="meaning"></div>');
     data.meaning.forEach(element => {
@@ -66,4 +72,14 @@ $(document).ready(function () {
     };
     return data;
   };
+  const onClickOutside = (e) => {
+    if (!$(e.target).closest('.FangPianCard').length) {
+      var s = window.getSelection();
+      s.removeAllRanges();//取消选择
+      $(".FangPianCard").remove();
+      window.removeEventListener("click", onClickOutside);
+    }
+    console.log("俺还在");
+  };
+  
 });
