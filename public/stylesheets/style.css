@@ -4,17 +4,25 @@
 }
 * {
   font-family: "medium-font";
-  font-size: 22px;
+  font-size: 20px;
+  color:#333;
+  line-height: 33px;
+  word-wrap: break-word;
 }
 body {
   padding: 4em;
+  display: flex;
+  flex-direction: row;
 }
 
-a {
-  color: #00B7FF;
+h1 {
+  font-size: 3em;
 }
 
 #card { 
+  /* overflow: scroll; */
+  width: 14vw;
+  height: auto;
   position: absolute;
   background: white;
   border: 0.05em solid black;
@@ -22,4 +30,14 @@ a {
   /* box-shadow: 0.1em 0.1em 0 0 #555, 0 0 0.1em 0.1em #fff; */
   box-shadow: 0.1em 0.1em 0 0 #555;
   padding: 0.5em;
+}
+.left{
+  flex-basis: 65%;
+  max-width: 65%;
+}
+.right{
+  margin-left: 2em;
+  border-left: 0.1em solid #333;
+  flex-basis: 35%;
+  max-width: 35%;
 }
