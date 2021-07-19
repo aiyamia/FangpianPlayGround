@@ -1,21 +1,17 @@
 $(document).ready(function () {
-  
-  $(document).on('keydown', function (e) {
-    if (e.ctrlKey || macKeys.cmdKey) 
+  $(document.body).bind('mousedown', function (e) {
+    if (e.ctrlKey || macKeys.cmdKey) {
       $(document.body).css("cursor", "pointer");
       var s = window.getSelection();
       s.removeAllRanges();//取消选择
       $(".FangPianCard").remove();
-  });
-  $(document).on('keyup', function (e) {
-    if (!e.ctrlKey || !macKeys.cmdKey) 
-      $(document.body).css("cursor", "initial");
-      
+    }else{
+      $(this).trigger('onmousedown');
+    }
   });
   $(document.body).bind('mouseup', async function (e) {
-    console.log("mouseup");
     if (e.ctrlKey || macKeys.cmdKey) {
-      console.log("mouseup1");
+      $(document.body).css("cursor", "initial");
       var s;
       if (window.getSelection) {
         s = window.getSelection();
@@ -65,7 +61,6 @@ $(document).ready(function () {
   const fetchData = async(word)=>{
     let response = await fetch(`https://dictweb.translator.qq.com/api/elementary?word=${word}`);
     let result = await response.json();
-    // console.log(result);
     let data = {
       meaning:result.oxford_dict_info.abstract,
       pronunciation:result.oxford_dict_info.ph_json
@@ -79,7 +74,5 @@ $(document).ready(function () {
       $(".FangPianCard").remove();
       window.removeEventListener("click", onClickOutside);
     }
-    console.log("俺还在");
   };
-  
 });
